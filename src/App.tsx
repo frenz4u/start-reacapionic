@@ -1,8 +1,18 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import {
+  IonApp,
+  IonContent,
+  IonFab,
+  IonFabButton,
+  IonIcon,
+  IonModal,
+  IonPage,
+  IonRouterOutlet,
+  setupIonicReact,
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import { ellipse, share, square, triangle } from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,19 +33,85 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import IntroPage from './pages/intro';
+import SettingPage from './pages/mypage/setting';
+
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
+    {/* <IonPage>
+      <IonContent>
+        <IonModal isOpen={modalOpen} class="modaaal" className="modaaal" onDidDismiss={handleModalClose}>
+          <SelectransactionModal onClose={() => setModalOpen(false)}
+          />
+        </IonModal>
+      </IonContent>
+    </IonPage> */}
     <IonReactRouter>
       <IonRouterOutlet>
+        {/* <Route path="/tabs" render={() => <MainTabs />} /> */}
+        <Route exact path="/intro">
+          <IntroPage />
+        </Route>
+        <Route exact path="/setting">
+          <SettingPage />
+        </Route>
+        {/* <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
         <Route exact path="/home">
           <Home />
         </Route>
+
+        <Route exact path="/request">
+          <Request />
+        </Route>
+
+        <Route exact path="/requestmoney">
+          <Requestmoney />
+        </Route>
+
+        <Route exact path="/send">
+          <Send />
+        </Route>
+        <Route exact path="/sendmoney">
+          <Sendmoney />
+        </Route>
+
+        <Route path="/requestreview" component={Requestreview}></Route>
+
+        <Route path="/reviewandsend" component={Reviewandsend}></Route>
+
+        <Route exact path="/successmodal">
+          <Successmodal />
+        </Route>
+
+        <Route exact path="/notifications">
+          <Notifications />
+        </Route>
+
+        <Route path="/addincome" component={Addincome}></Route> */}
+
         <Route exact path="/">
-          <Redirect to="/home" />
+          <Redirect to="/intro" />
         </Route>
       </IonRouterOutlet>
+
+      {/* <IonFab
+        onClick={() => setModalOpen(true)}
+        style={fabButtonStyle}
+        vertical="bottom"
+        horizontal="center"
+        slot="fixed"
+      >
+        <IonFabButton>
+          <IonIcon icon={share} />
+        </IonFabButton>
+      </IonFab> */}
     </IonReactRouter>
   </IonApp>
 );
